@@ -1,3 +1,7 @@
+package ru.stqa.pft.sandbox;
+
+import ru.stqa.pft.sandbox.Square;
+
 public class MyFirstProgram {
 
   public static void main(String[] args) {
