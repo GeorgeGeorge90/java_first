@@ -22,7 +22,7 @@ public class MyFirstProgram {
 
 }
 
-  class Point {
+
   public static void main(String args[]) {
 
     Point p1 = new Point(0, 0);
@@ -37,4 +37,4 @@ public class MyFirstProgram {
 
     System.out.println("p1.distance(60, 80) = " + p1.distance(60, 80));
 
-  } }
+  }

@@ -26,3 +26,4 @@ class Point { int х, у;
 
     } }
 
+
