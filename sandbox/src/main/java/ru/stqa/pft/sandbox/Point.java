@@ -1,20 +1,20 @@
 package ru.stqa.pft.sandbox;
 
-class Point { int х, у;
+class Point { int x, y;
 
-    Point(int х, int у) {
+    Point(int x, int y) {
 
-        this.x = х;
+        this.x = x;
 
         this.y = y;
 
     }
 
-    double distance(int х, int у) {
+    double distance(int x, int y) {
 
-        int dx = this.x - х;
+        int dx = this.x - y;
 
-        int dy = this.у - у;
+        int dy = this.y - y;
 
         return Math.sqrt(dx*dx + dy*dy);
 
