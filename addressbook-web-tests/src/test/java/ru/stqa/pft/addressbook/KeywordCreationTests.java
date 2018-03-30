@@ -22,11 +22,11 @@ public class KeywordCreationTests {
     public void setUp() throws Exception {
         wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
         wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        wd.get("https://www.carid.com/");
     }
     
     @Test
     public void KeywordCreationTests() {
-        wd.get("https://www.carid.com/");
         wd.findElement(By.cssSelector("label.header-search-btn.js-search-btn")).click();
         wd.findElement(By.id("headsearch-field-input")).click();
         wd.findElement(By.id("headsearch-field-input")).clear();
