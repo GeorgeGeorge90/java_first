@@ -1,22 +1,21 @@
-import com.sun.org.apache.xpath.internal.compiler.Keywords;
+import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import static org.testng.Assert.*;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
-import java.util.concurrent.TimeUnit;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
-import java.io.File;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.*;
-import static org.openqa.selenium.OutputType.*;
+import java.util.concurrent.TimeUnit;
 
 public class keywords {
     FirefoxDriver wd;
@@ -42,12 +41,21 @@ public class keywords {
             wd.findElement(By.id("headsearch-field-input")).clear();
             wd.findElement(By.id("headsearch-field-input")).sendKeys(keyword);
             Thread.sleep(10000);
-            File scrFile = ((TakesScreenshot)wd).getScreenshotAs(OutputType.FILE);
+            File scrFile = ((TakesScreenshot) wd).getScreenshotAs(OutputType.FILE);
+
+            DateFormat dateFormat = new SimpleDateFormat("yyyy MM dd");
+            Date date = new Date();
+
+            Path path = FileSystems.getDefault().getPath("d:\\screen\\");
+            File Folder = new File(path.toString() + "\\" + dateFormat.format(date).toString());
+            Folder.mkdir();
+            File newFile = new File(Folder.toPath().toString(), keyword + ".png");
+//           Now you can do whatever you need to do with it, for example copy somewhere
+            Files.copy(scrFile.toPath(), newFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+//        FileUtils.copyFile(scrFile, new File("c:\\tmp\\screenshot.png"));
+//            wd.findElement(By.id("headsearch-field-input")).click();
+//        Files.copy(src, dst, StandardCopyOption.REPLACE_EXISTING);
         }
-//        File path = new File("C:\\screen\\");
-        // Now you can do whatever you need to do with it, for example copy somewhere
-//        Files.copy(scrFile.toPath(), path.toPath(), StandardCopyOption.COPY_ATTRIBUTES);
-        //        FileUtils.copyFile(scrFile, new File("c:\\tmp\\screenshot.png"));        wd.findElement(By.id("headsearch-field-input")).click();
 
     }
     
