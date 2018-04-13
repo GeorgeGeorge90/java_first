@@ -41,6 +41,7 @@ public class keywords {
             wd.findElement(By.id("headsearch-field-input")).click();
             wd.findElement(By.id("headsearch-field-input")).clear();
             wd.findElement(By.id("headsearch-field-input")).sendKeys(keyword);
+            Thread.sleep(10000);
             File scrFile = ((TakesScreenshot)wd).getScreenshotAs(OutputType.FILE);
         }
 //        File path = new File("C:\\screen\\");
